@@ -6,6 +6,11 @@
     "test": "jest",
     "start": "node ./src/index.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo \"[Husky] TODO: Mostrar essa etapa a equipe para alinhar\""
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LoneWolfFICR/backend-ccapp.git"
@@ -17,7 +22,6 @@
   },
   "homepage": "https://github.com/LoneWolfFICR/backend-ccapp#readme",
   "description": "LoneWolfFICR",
-
   "dependencies": {
     "express": "^4.17.3"
   },
@@ -27,6 +31,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0"
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4"
   }
 }
