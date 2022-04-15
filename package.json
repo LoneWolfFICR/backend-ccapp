@@ -4,12 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node ./src/index.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo \"[Husky] TODO: Mostrar essa etapa a equipe para alinhar\""
-    }
+    "start": "node ./src/index.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -30,8 +26,13 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.8"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
