@@ -22,16 +22,22 @@
     "express": "^4.17.3"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "husky": "^7.0.4",
-    "lint-staged": "^12.3.8"
+    "i": "^0.3.7",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.3.8",
+    "npm": "^8.7.0",
+    "supertest": "^6.2.2"
   },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
+      "cross-env CI=true npm test",
       "git add"
     ]
   }
