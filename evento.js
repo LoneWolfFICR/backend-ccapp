@@ -21,7 +21,6 @@ app.post("/evento", (request,response)=> {
 
  return response.json(evento)
 })
-
 app.get("/evento", (request,response)=>{
     return response.json(eventos)
 })
