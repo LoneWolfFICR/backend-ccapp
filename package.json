@@ -5,6 +5,7 @@
   "scripts": {
     "test": "jest",
     "start": "node ./src/index.js",
+    "swagger-autogen": "node swagger.js",
     "prepare": "husky install"
   },
   "repository": {
@@ -21,8 +22,12 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.17.3",
+    "express-rate-limit": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.19.2"
+    "sequelize": "^6.19.2",
+    "swagger-autogen": "^2.21.2",
+    "swagger-ui-express": "^4.4.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

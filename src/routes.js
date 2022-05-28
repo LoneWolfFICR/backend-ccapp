@@ -2,14 +2,16 @@ const express = require('express');
 
 const app = express();
 
-const rotaUsuario = require('./routes/usuario');
-// const rotaUsuario = require('./routes/usuario');
+const usuario = require('./routes/usuario');
+const login = require('./routes/login');
+const evento = require('./routes/evento');
+const resposta = require('./routes/resposta');
 
-app.use('/usuario', rotaUsuario);
-// app.use('/evento', rotaUsuario);
+const loginController = require('./controllers/LoginController');
 
-app.use('', (req, res) => { // Rota coringa
-  res.send('Rota inexistente');
-});
+app.use('/login', login);
+app.use('/usuario', usuario);
+app.use('/evento', loginController.verificarToken, evento);
+app.use('/resposta', loginController.verificarToken, resposta);
 
 module.exports = app;

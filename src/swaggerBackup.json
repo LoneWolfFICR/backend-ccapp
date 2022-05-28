@@ -1,0 +1,96 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CCAPP",
+    "description": "...",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
+    "/usuario": {
+      "post": {
+        "tags": ["Usuario"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "senha": {
+                    "type": "string"
+                  },
+                  "token": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Usuario"],
+        "parameters": [{}]
+      },
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "401": {
+          "description": "Usuario não autorizado"
+        }
+      }
+    },
+    "/evento": {
+      "post": {
+        "tags": ["Evento"],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "titulo": {
+                    "type": "string"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  },
+                  "local": {
+                    "type": "string"
+                  },
+                  "media": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Evento"],
+        "security": [{"bearerAuth": []}],
+        "parameters": [{
+          "require": true
+        }]
+      }
+    }
+  }
+}

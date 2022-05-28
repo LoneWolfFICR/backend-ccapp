@@ -4,6 +4,8 @@ const Resposta = require('../models/Resposta');
 
 module.exports = {
   async create(req, res) {
+    // #swagger.tags = ['resposta']
+    // #swagger.description = 'Endpoint para obter criar as resposta do evento.'
     const {
       idUsuario, idEvento, descricao, media,
     } = req.body;
