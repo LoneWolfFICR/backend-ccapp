@@ -6,12 +6,15 @@ const usuario = require('./routes/usuario');
 const login = require('./routes/login');
 const evento = require('./routes/evento');
 const resposta = require('./routes/resposta');
+const admin = require('./routes/admin');
 
 const loginController = require('./controllers/LoginController');
 
 app.use('/login', login);
-app.use('/usuario', usuario);
+app.use('/usuario', loginController.verificarTokenAdmin, usuario);
 app.use('/evento', loginController.verificarToken, evento);
 app.use('/resposta', loginController.verificarToken, resposta);
+app.use('/admin', loginController.verificarToken, admin);
+app.use('/', (req, res) => { res.status(200).send('ok'); });
 
 module.exports = app;

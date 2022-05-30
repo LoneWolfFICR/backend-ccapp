@@ -10,7 +10,7 @@ test('teste simples de rota', async () => {
   // usuario.senha = '123456';
   // usuario.token = 'umtokenqualquer';
   const response = await request(app)
-    .get('/usuario')
+    .get('/')
     .send();
   expect(response.status).toBe(200);
 });
