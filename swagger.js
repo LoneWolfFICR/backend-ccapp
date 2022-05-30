@@ -9,7 +9,7 @@ const doc = {
     title: 'CCAPP',
     description: 'Documentação do API do CC App, Gerado pela Equipe Lone Wolf',
   },
-  host: 'localhost:3000',
+  host: '3.83.139.54:3005',
   basePath: '/',
   schemes: ['http', 'https'],
   consumes: ['application/json'],

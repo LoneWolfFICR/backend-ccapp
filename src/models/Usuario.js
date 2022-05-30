@@ -7,6 +7,8 @@ class Usuario extends Model {
       email: DataTypes.STRING,
       senha: DataTypes.STRING,
       token: DataTypes.STRING,
+      is_admin: DataTypes.BOOLEAN,
+      sys_admin: DataTypes.BOOLEAN,
     }, {
       sequelize,
       freezeTableName: true,

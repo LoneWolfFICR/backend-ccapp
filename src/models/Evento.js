@@ -7,6 +7,7 @@ class Evento extends Model {
       descricao: DataTypes.STRING,
       local: DataTypes.STRING,
       media: DataTypes.STRING,
+      status: DataTypes.BOOLEAN,
     }, {
       sequelize,
       freezeTableName: true,

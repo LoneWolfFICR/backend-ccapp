@@ -1,6 +1,8 @@
 require('dotenv').config();
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+// eslint-disable-next-line camelcase
+const jwt_decode = require('jwt-decode');
 const Usuario = require('../models/Usuario');
 
 const expirarToken = 180; // Tempo para expirar o token em minutos;
@@ -35,7 +37,31 @@ module.exports = {
       if (err) return res.status(500).json({ auth: false, mensagem: 'Ocorreu um erro na sua autorização.' });
       // Se tiver tudo ok, salva no req para usar posterior.
       req.userId = decoded.id;
-      req.type = decoded.admin;
+      req.admin = decoded.admin;
+      req.sysadmin = decoded.sys_admin;
+      return next();
+    });
+
+    return null;
+  },
+  verificarTokenAdmin(req, res, next) {
+    const token = req.headers.authorization;
+    if (!token) return res.status(401).json({ auth: false, mensagem: 'Usuario não autorizado.' });
+
+    const onlyToken = token.split(' ');
+
+    const dados = jwt_decode(onlyToken[1]);
+
+    if (!dados.usuario.is_admin) {
+      return res.status(401).json({ mensagem: 'Usuario não autorizado.' });
+    }
+
+    jwt.verify(onlyToken[1], process.env.JWT_SECRET, (err, decoded) => {
+      if (err) return res.status(500).json({ auth: false, mensagem: 'Ocorreu um erro na sua autorização.' });
+      // Se tiver tudo ok, salva no req para usar posterior.
+      req.userId = decoded.id;
+      req.admin = decoded.admin;
+      req.sysadmin = decoded.sys_admin;
       return next();
     });
 
