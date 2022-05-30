@@ -5,7 +5,7 @@
     "title": "CCAPP",
     "description": "Documentação do API do CC App, Gerado pela Equipe Lone Wolf"
   },
-  "host": "localhost:3000",
+  "host": "3.83.139.54:3005",
   "basePath": "/",
   "tags": [
     {
@@ -81,6 +81,11 @@
         "description": "Endpoint para criar um usuário.",
         "parameters": [
           {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "schema": {
@@ -105,6 +110,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -113,10 +124,22 @@
           "usuario"
         ],
         "description": "Endpoint para obter todos os usuários.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -293,6 +316,88 @@
                   "example": "any"
                 },
                 "media": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/admin/setadmin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "description": "Endpoint para adicionar um usuario admin.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/admin/setsysadmin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "description": "Endpoint para adicionar um usuario SysAdmin.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
                   "example": "any"
                 }
               }
