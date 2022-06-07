@@ -48,6 +48,7 @@ module.exports = {
     // #swagger.description = 'Endpoint para atualizar usuario logado ou outro usuario se admin.'
     if (!req.body.id) return res.status(400).json({ auth: true, mensagem: 'Id não informada ou não conseguir localizar.' });
     const {
+      // eslint-disable-next-line camelcase
       id, nome, email, senha, token, is_admin, sys_admin,
     } = req.body;
     const tokenUser = req.headers.authorization;
@@ -60,7 +61,15 @@ module.exports = {
       // Só atualiza o is_admin e sys_admin se for um sys_admin.
       if (dados.usuario.sys_admin) {
         const update = await Usuario.update({
-          id, nome, email, senha: senhaCript, token, is_admin: is_admin != null || undefined ? is_admin : false, sys_admin: sys_admin != null || undefined ? sys_admin : false,
+          id,
+          nome,
+          email,
+          senha: senhaCript,
+          token,
+          // eslint-disable-next-line camelcase
+          is_admin: is_admin != null || undefined ? is_admin : false,
+          // eslint-disable-next-line camelcase
+          sys_admin: sys_admin != null || undefined ? sys_admin : false,
         }, { where: { id } });
         if (!update) return res.status(500).json({ error: true, mensagem: 'Ocorreu um erro ao atualizar os dados.' });
         return res.status(200).json({ error: false, mensagem: 'Usuario atualizado com sucesso.' });
